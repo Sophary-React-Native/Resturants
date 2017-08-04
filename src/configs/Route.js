@@ -1,12 +1,11 @@
 import React from 'react';
-import {Actions, Scene, Router} from 'react-native-router-flux';
+import { Navigation } from 'react-native-navigation';
 
 import CMSContainer from '../../src/containers/CMSContainer';
+import PinContainer from '../../src/containers/PinContainer'
 
-const scenes = Actions.create(
-  <Scene key="root">
-    <Scene key="CMSContainer" component={CMSContainer} title="CIF" hideNavBar/>
-  </Scene>
-);
-
-export default scenes;
+// register all screens of the app (including internal ones)
+export function registerScreens() {
+  Navigation.registerComponent('pinScreen', () => PinContainer);
+  Navigation.registerComponent('cmsScreen', () => CMSContainer);
+}
